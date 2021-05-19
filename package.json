@@ -10,7 +10,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "class-validator": "^0.13.1",
     "express": "^4.17.1",
+    "inversify-express-utils": "^6.3.2",
     "jwt-then": "^1.0.1",
     "pg": "^8.5.1",
     "pg-hstore": "^2.3.3",
