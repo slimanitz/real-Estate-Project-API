@@ -1,22 +1,11 @@
-import  * as express from 'express';
-import { sequelize } from './database';
+import * as express from "express";
+import { DbContext } from "./database/db-context";
 
+const app = express();
 
+const db = new DbContext();
 
-const app = express()
-
-
-
-app.listen(8080,()=>{
-    console.log('The app is running at localhost:8080')
-    sequelize.authenticate().then(async ()=>{
-        console.log('database connected')
-        try{
-            await sequelize.sync({force:true})
-            console.log('sync success')
-
-        }catch(error){
-            console.log(error.message)
-        }
-    }).catch((err)=>console.log(err.message))
-})
+app.listen(3000, async () => {
+  await db.sync({ force: true });
+  console.log("The app is running at localhost:3000 at date");
+});
