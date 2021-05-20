@@ -2,7 +2,7 @@ import { Table, Column, Model, DataType } from "sequelize-typescript";
 
 @Table({
   schema: "properties",
-  tableName: "box",
+  tableName: "box_rent",
   timestamps: false,
 })
 export default class DbBox extends Model<DbBox> {
@@ -30,10 +30,10 @@ export default class DbBox extends Model<DbBox> {
 
   @Column({
     field: "price",
-    type: DataType.STRING,
+    type: DataType.INTEGER,
     allowNull: false,
   })
-  public price!: string;
+  public price!: number;
 
   @Column({
     field: "size",
@@ -51,22 +51,29 @@ export default class DbBox extends Model<DbBox> {
 
   @Column({
     field: "postal_code",
-    type: DataType.INTEGER,
+    type: DataType.STRING,
     allowNull: false,
   })
   public postalCode!: String;
 
   @Column({
-    field: "publish-date",
+    field: "publish_date",
     type: DataType.DATEONLY,
     allowNull: false,
   })
   public publishDate!: Date;
 
   @Column({
-    field: "remove-date",
+    field: "remove_date",
     type: DataType.DATEONLY,
-    allowNull: false,
+    allowNull: true,
   })
   public removeDate!: Date;
+
+  @Column({
+    field: "url",
+    type: DataType.STRING,
+    allowNull: false,
+  })
+  public url!: String;
 }

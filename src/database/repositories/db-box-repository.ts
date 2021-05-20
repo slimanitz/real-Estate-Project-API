@@ -5,7 +5,7 @@ import { TYPES } from "../../../infrastructure/ioc/types";
 import DbUserMapper from "./mappings/db-user-mapper";
 import DbUser from "src/persistence/models/account/db-user";*/
 
-import Box from "../models/box-model";
+import Box from "../models/box-rent-model";
 
 import { DbContext } from "../db-context";
 

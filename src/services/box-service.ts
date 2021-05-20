@@ -1,5 +1,5 @@
 import DbBoxRepository from "../database/repositories/db-box-repository";
-import Box from "../database/models/box-model";
+import Box from "../database/models/box-rent-model";
 
 export default class BoxService {
   #dbBoxRepository = new DbBoxRepository();
