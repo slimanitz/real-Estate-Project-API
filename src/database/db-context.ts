@@ -1,18 +1,20 @@
 import { Sequelize } from "sequelize-typescript";
-import DbBox from "./models/box-model";
+import DbBoxRent from "./models/box-rent-model";
 import { sequelizeConnection } from "../database/database-connection";
 import DbTableName from "./db-table-name";
-
+import DbBoxSell from "./models/box-sell-model";
 export class DbContext {
   #sequelize: Sequelize;
-  public Box: typeof DbBox;
+  public BoxRent: typeof DbBoxRent;
+  public BoxSell: typeof DbBoxSell;
 
   public constructor() {
     this.#sequelize = sequelizeConnection;
 
-    this.#sequelize.addModels([DbBox]);
+    this.#sequelize.addModels([DbBoxRent, DbBoxSell]);
 
-    this.Box = DbBox;
+    this.BoxSell = DbBoxSell;
+    this.BoxRent = DbBoxRent;
   }
 
   public async sync(options: any) {

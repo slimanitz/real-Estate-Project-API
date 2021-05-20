@@ -1,5 +1,5 @@
 import * as Validator from "class-validator";
-import DbBox from "../../../database/models/box-model";
+import DbBox from "../../../database/models/box-rent-model";
 
 export class CreateRequest {
   @Validator.IsString()

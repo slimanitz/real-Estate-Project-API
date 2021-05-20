@@ -11,7 +11,7 @@ import {
 import * as express from "express";
 
 import BoxService from "../services/box-service";
-import Box from "../database/models/box-model";
+import Box from "../database/models/box-rent-model";
 import { CreateRequest } from "./requests/box/box-create-request";
 
 @controller("/boxs")
