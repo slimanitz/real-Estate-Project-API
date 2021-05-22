@@ -1,8 +1,14 @@
-import DbBoxRepository from "../../database/repositories/Box/db-box-rent-repository";
+import BoxRentRepository from "../../database/repositories/Box/db-box-rent-repository";
 import Box from "../../database/models/box-rent-model";
-
+import { inject, injectable } from "inversify";
+@injectable()
 export default class BoxService {
-  #dbBoxRepository = new DbBoxRepository();
+  #dbBoxRepository: BoxRentRepository;
+  constructor(
+    @inject("BoxRentRepository") private boxRentRepository: BoxRentRepository
+  ) {
+    this.#dbBoxRepository = boxRentRepository;
+  }
 
   async create(box: Box): Promise<void> {
     await this.#dbBoxRepository.create(box);

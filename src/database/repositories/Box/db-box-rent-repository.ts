@@ -8,8 +8,10 @@ import DbUser from "src/persistence/models/account/db-user";*/
 import BoxRent from "../../models/box-rent-model";
 
 import { DbContext } from "../../db-context";
+import { injectable } from "inversify";
 
-export default class DbUserRepository {
+@injectable()
+export default class DbBoxRentRepository {
   #db: DbContext = new DbContext();
 
   async create(box: BoxRent): Promise<void> {

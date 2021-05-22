@@ -1,19 +1,26 @@
 import {
+  interfaces,
   controller,
-  BaseHttpController,
+  httpGet,
   httpPost,
-  requestBody,
+  httpDelete,
+  request,
+  queryParam,
   response,
   requestParam,
-  httpGet,
+  requestBody,
 } from "inversify-express-utils";
+import { inject } from "inversify";
 import * as express from "express";
 
-import BoxService from "../services/box/box-rent-service";
+import BoxService from "../../services/box/box-rent-service";
 
 @controller("/boxs/sell")
-export class AccountController extends BaseHttpController {
-  #boxService = new BoxService();
+export class BoxSellController implements interfaces.Controller {
+  #boxService: BoxService;
+  constructor(@inject("BoxSellService") private boxSellService: BoxService) {
+    this.#boxService = boxSellService;
+  }
 
   @httpPost("/")
   public async create(
