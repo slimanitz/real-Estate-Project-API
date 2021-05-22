@@ -1,4 +1,5 @@
 import { Table, Column, Model, DataType } from "sequelize-typescript";
+import { Status } from "../enums/status-enum";
 
 @Table({
   schema: "properties",
@@ -77,4 +78,19 @@ export default class DbBox extends Model<DbBox> {
     allowNull: false,
   })
   public url!: String;
+
+  @Column({
+    field: "ref",
+    type: DataType.STRING,
+    allowNull: false,
+  })
+  public ref!: String;
+
+  @Column({
+    field: "status",
+    type: DataType.ENUM("Active", "Gone"),
+    allowNull: false,
+    defaultValue: "Active",
+  })
+  public status!: Status;
 }

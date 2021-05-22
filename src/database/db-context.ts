@@ -3,6 +3,7 @@ import DbBoxRent from "./models/box-rent-model";
 import { sequelizeConnection } from "../database/database-connection";
 import DbTableName from "./db-table-name";
 import DbBoxSell from "./models/box-sell-model";
+
 export class DbContext {
   #sequelize: Sequelize;
   public BoxRent: typeof DbBoxRent;
