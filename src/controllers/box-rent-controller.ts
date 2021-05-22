@@ -5,16 +5,13 @@ import {
   requestBody,
   response,
   requestParam,
-  httpPut,
   httpGet,
 } from "inversify-express-utils";
 import * as express from "express";
 
-import BoxService from "../services/box-service";
-import Box from "../database/models/box-rent-model";
-import { CreateRequest } from "./requests/box/box-create-request";
+import BoxService from "../services/box/box-rent-service";
 
-@controller("/boxs")
+@controller("/boxs/rent")
 export class AccountController extends BaseHttpController {
   #boxService = new BoxService();
 
