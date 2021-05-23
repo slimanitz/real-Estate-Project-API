@@ -26,6 +26,6 @@ server.setConfig(async (app) => {
 let app = server.build();
 
 app.listen(3000, async () => {
-  await db.sync({ force: false });
+  await db.sync({ force: true });
   console.log("The app is running at localhost:3000 at date");
 });

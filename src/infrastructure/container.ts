@@ -4,8 +4,6 @@ import BoxSellService from "../services/box/box-sell-service";
 import BoxSellRepository from "../database/repositories/Box/db-box-sell-repository";
 import BoxRentRepository from "../database/repositories/Box/db-box-rent-repository";
 
-import { DbContext } from "../database/db-context";
-
 const container = new Container();
 
 //DB

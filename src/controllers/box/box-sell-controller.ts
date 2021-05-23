@@ -3,9 +3,6 @@ import {
   controller,
   httpGet,
   httpPost,
-  httpDelete,
-  request,
-  queryParam,
   response,
   requestParam,
   requestBody,
@@ -13,7 +10,8 @@ import {
 import { inject } from "inversify";
 import * as express from "express";
 
-import BoxService from "../../services/box/box-rent-service";
+import BoxService from "../../services/box/box-sell-service";
+import { CreateBoxRequest } from "./requests/create-box-request";
 
 @controller("/boxs/sell")
 export class BoxSellController implements interfaces.Controller {
@@ -24,7 +22,7 @@ export class BoxSellController implements interfaces.Controller {
 
   @httpPost("/")
   public async create(
-    @requestBody() body: any,
+    @requestBody() body: CreateBoxRequest,
     @response() res: express.Response
   ) {
     await this.#boxService.create(body);

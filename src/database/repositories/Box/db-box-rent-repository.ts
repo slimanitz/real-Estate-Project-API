@@ -5,38 +5,39 @@ import { TYPES } from "../../../infrastructure/ioc/types";
 import DbUserMapper from "./mappings/db-user-mapper";
 import DbUser from "src/persistence/models/account/db-user";*/
 
-import BoxRent from "../../models/box-rent-model";
-
 import { DbContext } from "../../db-context";
 import { injectable } from "inversify";
+import { Box } from "../../../interfaces/box-interface";
+import DbBoxRentMapper from "./mapping/db-box-rent-mapper";
+import DbBox from "../../models/box-rent-model";
 
 @injectable()
 export default class DbBoxRentRepository {
   #db: DbContext = new DbContext();
 
-  async create(box: BoxRent): Promise<void> {
+  async create(box: any): Promise<void> {
     const created = await this.#db.BoxRent.create(box, { raw: true });
   }
 
-  async getAllByPostalCode(postalCode: string): Promise<BoxRent[]> {
+  async getAllByPostalCode(postalCode: string): Promise<Box[]> {
     const boxs = await this.#db.BoxRent.findAll({
       where: { postalCode: postalCode },
     });
 
-    return boxs.map((o) => o);
+    return boxs.map((o) => DbBoxRentMapper.to(o));
   }
 
-  async getAllByCity(city: string): Promise<BoxRent[]> {
+  async getAllByCity(city: string): Promise<Box[]> {
     const boxs = await this.#db.BoxRent.findAll({
       where: { city: city },
     });
 
-    return boxs.map((o) => o);
+    return boxs.map((o) => DbBoxRentMapper.to(o));
   }
 
-  async getAll(): Promise<BoxRent[]> {
+  async getAll(): Promise<Box[]> {
     const boxs = await this.#db.BoxRent.findAll({ raw: true });
-    return boxs.map((o) => o);
+    return boxs.map((o) => DbBoxRentMapper.to(o));
   }
 
   /*async remove(box: BoxRent): Promise<boolean> {

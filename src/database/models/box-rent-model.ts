@@ -6,7 +6,7 @@ import { Status } from "../enums/status-enum";
   tableName: "box_rent",
   timestamps: false,
 })
-export default class DbBox extends Model<DbBox> {
+export default class DbBoxRent extends Model<DbBoxRent> {
   @Column({
     field: "id",
     type: DataType.UUID,
@@ -20,76 +20,77 @@ export default class DbBox extends Model<DbBox> {
     type: DataType.STRING,
     allowNull: false,
   })
-  public owner!: string;
+  public owner: string;
 
   @Column({
     field: "city",
     type: DataType.STRING,
     allowNull: false,
   })
-  public city!: string;
+  public city: string;
 
   @Column({
     field: "price",
     type: DataType.INTEGER,
     allowNull: false,
   })
-  public price!: number;
+  public price: number;
 
   @Column({
     field: "size",
     type: DataType.INTEGER,
     allowNull: true,
   })
-  public size?: number;
+  public size: number;
 
   @Column({
     field: "departement",
     type: DataType.STRING,
     allowNull: false,
   })
-  public departement!: string;
+  public departement: string;
 
   @Column({
     field: "postal_code",
     type: DataType.STRING,
     allowNull: false,
   })
-  public postalCode!: String;
+  public postalCode: string;
 
   @Column({
     field: "publish_date",
     type: DataType.DATEONLY,
     allowNull: false,
   })
-  public publishDate!: Date;
+  public publishDate: Date;
 
   @Column({
     field: "remove_date",
     type: DataType.DATEONLY,
     allowNull: true,
+    defaultValue: null,
   })
-  public removeDate!: Date;
+  public removeDate?: Date;
 
   @Column({
     field: "url",
     type: DataType.STRING,
     allowNull: false,
   })
-  public url!: String;
+  public url: string;
 
   @Column({
     field: "ref",
     type: DataType.STRING,
     allowNull: false,
   })
-  public ref!: String;
+  public ref: string;
 
   @Column({
     field: "status",
     type: DataType.ENUM("Active", "Gone"),
     allowNull: false,
-    defaultValue: "Active",
+    defaultValue: Status.Active,
   })
-  public status!: Status;
+  public status?: Status;
 }

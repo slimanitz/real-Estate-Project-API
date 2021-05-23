@@ -1,11 +1,13 @@
 import BoxRentRepository from "../../database/repositories/Box/db-box-rent-repository";
-import Box from "../../database/models/box-rent-model";
 import { inject, injectable } from "inversify";
+import DbBox from "../../database/models/box-rent-model";
+import { Box } from "../../interfaces/box-interface";
+
 @injectable()
 export default class BoxService {
   #dbBoxRepository: BoxRentRepository;
   constructor(
-    @inject("BoxRentRepository") private boxRentRepository: BoxRentRepository
+    @inject("BoxRentRepository") public boxRentRepository: BoxRentRepository
   ) {
     this.#dbBoxRepository = boxRentRepository;
   }
