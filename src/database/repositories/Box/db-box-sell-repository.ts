@@ -8,12 +8,12 @@ import DbUser from "src/persistence/models/account/db-user";*/
 import BoxSell from "../../models/box-sell-model";
 
 import { DbContext } from "../../db-context";
-import {injectable} from 'inversify'
+import { injectable } from "inversify";
 @injectable()
 export default class DbBoxSellRepository {
   #db: DbContext = new DbContext();
 
-  async create(box: BoxSell): Promise<void> {
+  async create(box: any): Promise<void> {
     const created = await this.#db.BoxSell.create(box, { raw: true });
   }
 
