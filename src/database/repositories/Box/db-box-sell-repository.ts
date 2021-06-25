@@ -38,6 +38,11 @@ export default class DbBoxSellRepository {
     return boxs.map((o) => o);
   }
 
+  async getByRef(ref: string): Promise<BoxSell | null> {
+    const box = await this.#db.BoxSell.findOne({ where: { ref: ref } });
+    return box;
+  }
+
   /*async remove(box: BoxSell): Promise<boolean> {
     return this.#db.BoxSell.destroy({
       limit: 1,

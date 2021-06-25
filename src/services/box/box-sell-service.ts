@@ -12,7 +12,9 @@ export default class BoxSellService {
   }
 
   async create(box: Box): Promise<void> {
-    await this.#dbBoxRepository.create(box);
+    if (this.isStored(box.ref)) {
+      await this.#dbBoxRepository.create(box);
+    }
   }
 
   async getAllByPostalCode(postalCode: string): Promise<Box[]> {
@@ -28,5 +30,13 @@ export default class BoxSellService {
   async getAll(): Promise<Box[]> {
     const boxs = await this.#dbBoxRepository.getAll();
     return boxs.map((o) => o);
+  }
+
+  async isStored(ref: string): Promise<boolean> {
+    const box = await this.#dbBoxRepository.getByRef(ref);
+    if (box) {
+      return true;
+    }
+    return false;
   }
 }

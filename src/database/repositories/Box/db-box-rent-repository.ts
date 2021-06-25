@@ -40,6 +40,11 @@ export default class DbBoxRentRepository {
     return boxs.map((o) => DbBoxRentMapper.to(o));
   }
 
+  async getByRef(ref: string): Promise<Box | null> {
+    const box = await this.#db.BoxRent.findOne({ where: { ref: ref } });
+    return box;
+  }
+
   /*async remove(box: BoxRent): Promise<boolean> {
     return this.#db.BoxRent.destroy({
       limit: 1,
