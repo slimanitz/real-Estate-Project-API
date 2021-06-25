@@ -13,7 +13,7 @@ export default class BoxService {
   }
 
   async create(box: Box): Promise<void> {
-    if (!this.isStored(box.ref)) {
+    if (this.isStored(box.ref)) {
       await this.#dbBoxRepository.create(box);
     }
   }
